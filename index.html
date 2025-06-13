@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Premium Follower Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
     body, input, select, button, h1, h2, h3, p, div, span {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
@@ -29,7 +30,7 @@
     .container {
         max-width: 400px;
         margin: 50px auto;
-        padding: 30px;
+        padding: 30px 20px;
         background: #161616;
         border-radius: 15px;
         box-shadow: 0 0 30px #00ff88;
@@ -41,21 +42,31 @@
     }
     input, select, button {
         width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 12px 0;
+        border-radius: 10px;
         border: none;
         font-size: 16px;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
     }
     input, select {
         background: #222;
         color: #fff;
+    }
+    input:focus, select:focus {
+        outline: none;
+        box-shadow: 0 0 5px #00ff88;
     }
     button {
         background: linear-gradient(45deg, #00ff88, #00c4ff);
         color: #000;
         font-weight: bold;
         cursor: pointer;
+    }
+    button:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 10px #00c4ff;
     }
     .loading-bar {
         margin: 20px 0;
@@ -117,6 +128,22 @@
         height: 100%;
         object-fit: cover;
     }
+
+    @media screen and (max-width: 480px) {
+        .container {
+            margin: 20px auto;
+            padding: 20px 15px;
+        }
+        input, select, button {
+            padding: 10px 14px;
+            font-size: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .popup-content {
+            padding: 20px;
+        }
+    }
 </style>
 </head>
 <body>
@@ -171,13 +198,12 @@
     </div>
 </div>
 
-<!-- JavaScript -->
 <script>
 function startFB() {
     let link = document.getElementById("fbLink").value;
     let total = parseInt(document.getElementById("fbFollowers").value);
     if(link.trim()==="" || isNaN(total)){ alert("Fill all fields properly"); return; }
-    
+
     document.getElementById("fbLoadingBar").style.display = "block";
     document.getElementById("fbCounting").style.display = "block";
 
@@ -213,7 +239,7 @@ function startInsta() {
     let link = document.getElementById("instaLink").value;
     let total = parseInt(document.getElementById("instaFollowers").value);
     if(link.trim()==="" || isNaN(total)){ alert("Fill all fields properly"); return; }
-    
+
     document.getElementById("instaLoadingBar").style.display = "block";
     document.getElementById("instaCounting").style.display = "block";
 
@@ -243,6 +269,5 @@ function visitInsta(){
     window.open("https://www.instagram.com/xxyz.rana?igsh=eWtpZDM5M3h1aTVv", "_blank");
 }
 </script>
-
 </body>
 </html>
